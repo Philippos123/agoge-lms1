@@ -1,5 +1,7 @@
 from pathlib import Path
 import os
+import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,7 +12,7 @@ SECRET_KEY = 'django-insecure-key-for-development-only'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 # CSRF_TRUSTED_ORIGINS = ['http://localhost:5173', 'http://localhost:3000']
 # Application definition
 INSTALLED_APPS = [
@@ -104,6 +106,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+django_heroku.settings(locals())
 
 # Media files (Uploaded files)
 MEDIA_URL = '/media/'
